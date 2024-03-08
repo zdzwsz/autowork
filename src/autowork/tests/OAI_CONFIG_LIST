@@ -1,0 +1,10 @@
+[
+    {
+        "model": "glm-3-turbo",
+        "api_key": "7bba79bbae38a98bba903c94a55a3cc6.OR1K0e3feciAHgaN",
+        "api_type": "openai",
+        "base_url": "http://127.0.0.1:8000/v1"
+    
+    }
+   
+]
