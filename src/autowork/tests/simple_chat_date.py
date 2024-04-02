@@ -2,10 +2,6 @@ from autogen import UserProxyAgent,AssistantAgent
 
 
 def chat_date():
-    # Load LLM inference endpoints from an env variable or a file
-    # See https://microsoft.github.io/autogen/docs/FAQ#set-your-api-endpoints
-    # and OAI_CONFIG_LIST_sample.
-    # For example, if you have created a OAI_CONFIG_LIST file in the current working directory, that file will be used.
     config_list = [
         {
             'model': 'glm-4',
@@ -14,7 +10,16 @@ def chat_date():
             'api_type': 'openai'
         }
     ]
-
+    '''
+    config_list = [
+        {
+            'model': 'moonshot-v1-8k',
+            'api_key': 'sk-O6gQ681pXwvnRQUclPKJ14EppFNMAhLex3vPi2WJ7OwkKTHG',
+            'base_url': "https://api.moonshot.cn/v1",
+            'api_type': 'openai'
+        }
+    ]
+    '''
     system_message='''
         使用您的编码和语言技能解决任务。
         在以下情况下，选择一种脚本语言（python、shell）。
@@ -29,7 +34,10 @@ def chat_date():
 
     assistant = AssistantAgent(name="小飞",system_message=system_message, llm_config={"config_list": config_list})
 
-    user_proxy = UserProxyAgent("张大志", code_execution_config={"work_dir": "coding","use_docker":False},human_input_mode="NEVER",max_consecutive_auto_reply=5)
+    user_proxy = UserProxyAgent("张大志", 
+                                code_execution_config={"work_dir": "coding","use_docker":False},
+                                human_input_mode="NEVER",
+                                max_consecutive_auto_reply=5)
 
     user_proxy.initiate_chat(assistant, message="下礼拜一日期是多少？")
     #user_proxy.initiate_chat(assistant, message="有个coding文件夹，给我看看coding文件夹有什么文件？")

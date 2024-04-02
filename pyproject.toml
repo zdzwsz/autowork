@@ -24,3 +24,4 @@ distribution = true
 chat_date = "python src/autowork/tests/main.py chat_date"
 chat_file = "python src/autowork/tests/main.py chat_file"
 chat_weather = "python src/autowork/tests/main.py chat_weather"
+chat_rag = "python src/autowork/tests/main.py chat_rag"
